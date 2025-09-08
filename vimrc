@@ -15,9 +15,6 @@ syntax enable
 let mapleader = " "
 " 设置粘贴模式切换快捷键
 " set pastetoggle=<C-p>
-
-
-
 " 基础设置
 set nocompatible              " 不使用 Vi 兼容模式
 set number                    " 显示行号
@@ -44,6 +41,7 @@ set fileencodings=ucs-bom,utf-8,cp936 " 文件编码检测顺序
 set clipboard+=unnamed       " 使用系统剪贴板
 set showcmd                  " 显示正在输入的命令
 set laststatus=2             " 总是显示状态栏
+set bs+=start
 
 " 创建必要的目录
 call system('mkdir -p ~/.vimtmp/undodir ~/.vimtmp/backupdir ~/.vimtmp/directory')
@@ -62,15 +60,14 @@ Plug 'itchyny/lightline.vim'       " 状态栏
 Plug 'mbbill/undotree'             " 可视化撤销历史
 Plug 'tpope/vim-fugitive'          " Git 集成
 Plug 'kien/ctrlp.vim'              " 搜索
-
-" 主题
+Plug 'easymotion/vim-easymotion'
+"主题
 Plug 'ghifarit53/tokyonight-vim'   " 主题
 Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
 " 主题设置
-set t_Co=256   " This is may or may not needed.
 colorscheme PaperColor  
 set background=dark
 " colorscheme tokyonight  
@@ -95,7 +92,7 @@ let g:go_highlight_extra_types = 1     " 高亮额外类型
 let g:go_highlight_build_constraints = 1 " 高亮构建约束
 let g:go_fmt_autosave = 1              " 保存时自动格式化
 let g:go_fmt_command = "goimports"     " 使用 goimports 而不是 gofmt
-let g:go_def_mapping_enabled = 0       " 禁用默认的跳转定义映射(使用coc.nvim的)
+" let g:go_def_mapping_enabled = 0       " 禁用默认的跳转定义映射(使用coc.nvim的)
 
 " 自定义 Go 快捷键
 autocmd FileType go nmap <leader>r :GoRun %<CR>
