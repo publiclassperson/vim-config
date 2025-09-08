@@ -70,6 +70,7 @@ Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 " 主题设置
+set t_Co=256   " This is may or may not needed.
 colorscheme PaperColor  
 set background=dark
 " colorscheme tokyonight  
