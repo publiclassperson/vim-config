@@ -59,8 +59,12 @@ Plug 'tpope/vim-commentary'        " 快速注释
 Plug 'itchyny/lightline.vim'       " 状态栏
 Plug 'mbbill/undotree'             " 可视化撤销历史
 Plug 'tpope/vim-fugitive'          " Git 集成
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+Plug 'tpope/vim-rhubarb'
 Plug 'kien/ctrlp.vim'              " 搜索
 Plug 'easymotion/vim-easymotion'
+Plug 'github/copilot'
 "主题
 Plug 'ghifarit53/tokyonight-vim'   " 主题
 Plug 'NLKNguyen/papercolor-theme'
@@ -123,6 +127,8 @@ augroup go_autocmds
     " 设置 Go 文件的缩进
     autocmd FileType go setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
+"跳出insert模式快捷键
+inoremap jk <Esc>
 
 " 清除搜索高亮
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -145,7 +151,7 @@ let g:ctrlp_map = '<leader>pp'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+            \ 'qve':  '\i[\/]\.(tvg|ut|fia|eiz)$',
             \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
             \ }
 let g:ctrlp_working_path_mode=0
@@ -154,3 +160,23 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+
+" Git 相关快捷键映射
+nnoremap <leader>gg :Git<CR>
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gl :GV<CR>
+
+" gitgutter 配置
+let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0 " 禁用默认按键映射
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)]
+" 实时更新
+set updatetime=100
+" 自定义符号
+let g:gitgutter_sign_added = '✚'
+let g:gitgutter_sign_modified = '➜'
+let g:gitgutter_sign_removed = '✖'"
