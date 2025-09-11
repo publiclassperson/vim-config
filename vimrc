@@ -180,3 +180,8 @@ set updatetime=100
 let g:gitgutter_sign_added = '✚'
 let g:gitgutter_sign_modified = '➜'
 let g:gitgutter_sign_removed = '✖'"
+" 在合并冲突的 diff 模式下，使用更短的快捷键选择更改
+" " 获取 LOCAL 版本 (//2)
+nmap <leader>2 :diffget //2<CR>
+" " 获取 REMOTE 版本 (//3)
+nmap <leader>3 :diffget //3<CR>
