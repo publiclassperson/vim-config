@@ -68,6 +68,17 @@ Plug 'github/copilot'
 "主题
 Plug 'ghifarit53/tokyonight-vim'   " 主题
 Plug 'NLKNguyen/papercolor-theme'
+" Markdown 语法高亮和功能增强
+Plug 'plasticboy/vim-markdown'
+
+" 表格格式化工具
+Plug 'dhruvasagar/vim-table-mode'
+
+" Mermaid 流程图支持
+Plug 'mracos/mermaid.vim'
+
+" 可选：Markdown 预览插件（需要Node.js）
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cdp && npm install' }
 
 call plug#end()
 
@@ -185,3 +196,26 @@ let g:gitgutter_sign_removed = '✖'"
 nmap <leader>2 :diffget //2<CR>
 " " 获取 REMOTE 版本 (//3)
 nmap <leader>3 :diffget //3<CR>
+"临时关闭自动 补全符号
+let  g:AutoPairsShortcutToggle= '<leader>ap'
+
+" Markdown 插件配置
+let g:vim_markdown_folding_disabled = 1    " 禁用折叠
+let g:vim_markdown_frontmatter = 1         " 支持YAML前端元数据
+let g:vim_markdown_new_list_item_indent = 2 " 列表缩进
+
+" 表格模式配置
+ let g:table_mode_corner = '|'              " 表格角字符
+
+ " Mermaid 配置
+ let g:mermaid_executable = 'mmdc'          " 如果需要导出功能
+
+ " 快捷键设置
+ autocmd FileType markdown nnoremap <Leader>tm :TableModeToggle<CR>
+ autocmd FileType markdown nnoremap <Leader>mp :MarkdownPreview<CR>
+ autocmd FileType markdown nnoremap <Leader>ms :MarkdownPreviewStop<CR>
+
+" 语法高亮增强
+autocmd FileType markdown setlocal conceallevel=2
+autocmd FileType markdown syntax match Comment /\%^---\_.\{-}---\n/"
+" "
